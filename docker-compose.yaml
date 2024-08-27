@@ -14,6 +14,26 @@ services: # services which our app going to use. (list of containers we want to 
       - "3000:3000"
     depends_on:
       - mongo
+    environment:
+      - SERVER_NAME=api-server-1
+
+  api-server-2:
+    image: api-server
+    ports:
+      - "3001:3000"
+    depends_on:
+      - mongo
+    environment:
+      - SERVER_NAME=api-server-2
+
+  api-server-3:
+    image: api-server
+    ports:
+      - "3002:3000"
+    depends_on:
+      - mongo
+    environment:
+      - SERVER_NAME=api-server-3
 
 volumes: # enable persistence of database data across container restart
   mongo-data:
